@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Concrete.EntityFrameworkCore.Repositories.CustomerRepsository;
 
-internal class EfProductRepository : EfGenericRepository<Product>,IProductRepository
+public class EfProductRepository : EfGenericRepository<Product>,IProductRepository
 {
     public EfProductRepository(MsECommerceContext context) : base(context)
     {

@@ -1,0 +1,59 @@
+﻿@model  IEnumerable<CategoryViewModel>
+<CategoryViewModel>
+@{
+ViewData["Title"] = "Category";
+}
+<div class="card gap-3">
+   <div class="row card-header">
+      Categories
+   </div>
+   <div class="row px-4">
+       <div class="col-3">
+           <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#categoryAddedModel" >Add New Category</button>
+
+           <div class="modal fade" id="categoryAddedModel" tabindex="-1" aria-labelledby="categoryAddedModel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                   <form asp-action="AddCategory" method="post">
+                        <div class="mb-3">
+                          <label for="exampleFormControlInput1" class="form-label">Category Name</label>
+                          <input type="text" class="form-control" id="categoryName" name="CategoryName" placeholder="Computer,Phone etc.">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Category</button>
+                   </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+           </div>
+       </div>
+   </div>
+   <div class="row px-4">
+     <div class="col-8">
+          <table class="table table-dark table-striped-columns">
+         <thead>
+            <tr>
+               <th>ID</th>
+               <th>Category Name</th>
+            </tr>
+         </thead>
+         <tbody>
+            @foreach (var category in Model)
+            {
+            <tr>
+               <td>@category.Id</td>
+               <td>@category.CategoryName</td>
+            </tr>
+            }
+         </tbody>
+      </table>
+     </div>
+   </div>
+</div>

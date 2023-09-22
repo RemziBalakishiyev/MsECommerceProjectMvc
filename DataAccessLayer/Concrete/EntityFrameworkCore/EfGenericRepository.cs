@@ -30,9 +30,15 @@ public class EfGenericRepository<TEntity> : IGenericRepository<TEntity> where TE
         return true;
     }
 
-    public async Task<IEnumerable<TEntity>> GetAll()
+    public async Task<IEnumerable<TEntity>> GetAll(bool track = false)
     {
-        return await Table.ToListAsync();
+        if (track is false)
+        {
+            return await Table.ToListAsync();
+        }
+
+        return await Table.AsNoTracking().ToListAsync();
+        
     }
 
     public IQueryable<TEntity> GetById(int Id)
@@ -55,6 +61,11 @@ public class EfGenericRepository<TEntity> : IGenericRepository<TEntity> where TE
     {
         Table.RemoveRange(entities);
         return true;
+    }
+
+    public void SaveChanges()
+    {
+        _context.SaveChanges();
     }
 
     public bool Update(TEntity entity)
