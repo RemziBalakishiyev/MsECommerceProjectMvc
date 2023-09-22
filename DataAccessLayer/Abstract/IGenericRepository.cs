@@ -14,8 +14,10 @@ public interface IGenericRepository<TEntity> where TEntity : class, IBaseTable, 
     bool RemoveRange(ICollection<TEntity> entities);
     bool Update(TEntity entity);
 
+    void SaveChanges();
 
-    Task<IEnumerable<TEntity>> GetAll();
+    Task<IEnumerable<TEntity>> GetAll(bool track = false);
+  
     IQueryable<TEntity> GetById(int Id);
     IQueryable<TEntity> GetWhere(Expression<Func<TEntity,bool>> expression);
 }
