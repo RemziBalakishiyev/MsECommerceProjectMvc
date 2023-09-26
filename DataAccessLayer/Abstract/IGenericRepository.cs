@@ -18,4 +18,6 @@ public interface IGenericRepository<TEntity> where TEntity : class, IBaseTable, 
     Task<IEnumerable<TEntity>> GetAll();
     IQueryable<TEntity> GetById(int Id);
     IQueryable<TEntity> GetWhere(Expression<Func<TEntity,bool>> expression);
+
+    Task SaveChanges();
 }

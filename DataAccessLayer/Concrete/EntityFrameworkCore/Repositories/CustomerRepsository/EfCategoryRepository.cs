@@ -9,4 +9,9 @@ public class EfCategoryRepository : EfGenericRepository<Category>, ICategoryRepo
     public EfCategoryRepository(MsECommerceContext context) : base(context)
     {
     }
+
+    public void Test()
+    {
+        throw new NotImplementedException();
+    }
 }

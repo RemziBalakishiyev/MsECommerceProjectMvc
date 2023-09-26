@@ -57,6 +57,11 @@ public class EfGenericRepository<TEntity> : IGenericRepository<TEntity> where TE
         return true;
     }
 
+    public async  Task SaveChanges()
+    {
+        await _context.SaveChangesAsync();
+    }
+
     public bool Update(TEntity entity)
     {
         var state = Table.Update(entity);

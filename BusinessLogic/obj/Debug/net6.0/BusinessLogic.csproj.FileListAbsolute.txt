@@ -10,3 +10,8 @@ C:\Users\ASUS\Documents\EntityFramework Tutorial\MS-E-Commerce.App\BusinessLogic
 C:\Users\ASUS\Documents\EntityFramework Tutorial\MS-E-Commerce.App\BusinessLogic\obj\Debug\net6.0\refint\BusinessLogic.dll
 C:\Users\ASUS\Documents\EntityFramework Tutorial\MS-E-Commerce.App\BusinessLogic\obj\Debug\net6.0\BusinessLogic.pdb
 C:\Users\ASUS\Documents\EntityFramework Tutorial\MS-E-Commerce.App\BusinessLogic\obj\Debug\net6.0\ref\BusinessLogic.dll
+C:\Users\ASUS\Documents\EntityFramework Tutorial\MS-E-Commerce.App\BusinessLogic\bin\Debug\net6.0\DataAccessLayer.dll
+C:\Users\ASUS\Documents\EntityFramework Tutorial\MS-E-Commerce.App\BusinessLogic\bin\Debug\net6.0\Entity.dll
+C:\Users\ASUS\Documents\EntityFramework Tutorial\MS-E-Commerce.App\BusinessLogic\bin\Debug\net6.0\DataAccessLayer.pdb
+C:\Users\ASUS\Documents\EntityFramework Tutorial\MS-E-Commerce.App\BusinessLogic\bin\Debug\net6.0\Entity.pdb
+C:\Users\ASUS\Documents\EntityFramework Tutorial\MS-E-Commerce.App\BusinessLogic\obj\Debug\net6.0\BusinessLogic.csproj.CopyComplete

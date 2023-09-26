@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CategoryModel>
+@{
+    ViewData["Title"] = "Category";
+}
+
+
+<div class="card">
+    <div class="row card-header">
+        <h5>Categories</h5>
+    </div>
+   
+
+    <div class="row">
+        <div class="col-3 p-4">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#categoryAddedModel" >Add New Category</button>
+
+                <div class="modal fade" id="categoryAddedModel" tabindex="-1" aria-labelledby="categoryAddedModel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                        <form asp-action="AddCategory" method="post">
+                              <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="categoryName" class="form-label">Category Name</label>
+                                    <input type="text" class="form-control" id="categoryName" name="CategoryName" placeholder="Tvs, Computers etc. ">
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                              </div>
+                        </form>
+                    </div>
+                  </div>
+                </div>
+        </div>
+    </div>
+    <div class=" card-body px-4">
+
+        <div class="col-8">
+         <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Category Name</th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            
+              @foreach (var category in Model)
+              {
+                  <tr>
+                      <td>@category.Id</td>
+                      <td>@category.CategoryName</td>
+                  </tr>
+              }
+           
+           </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+
