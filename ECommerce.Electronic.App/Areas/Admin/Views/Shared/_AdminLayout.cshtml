@@ -4,6 +4,9 @@
       <meta name="viewport" content="width=device-width" />
       <title>@ViewBag.Title</title>
       <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+      <link href="~/lib/font-awasome/css/all.min.css">
+      <link href="~/lib/font-awasome/css/fontawesome.min.css">
+
    </head>
    <body>
       <div class="container-fluid">
@@ -71,5 +74,9 @@
       <script src="~/lib/jquery/dist/jquery.min.js"></script>
       <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
       <script src="~/js/site.js" asp-append-version="true"></script>
+      <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+      <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+      @RenderSection("scripts",false);
    </body>
 </html>

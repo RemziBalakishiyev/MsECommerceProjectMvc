@@ -31,29 +31,22 @@ namespace ECommerce.Electronic.App.Areas.Admin.Controllers
         public async Task<IActionResult> Category()
         {
 
-            List<CategoryViewModel> categories = new List<CategoryViewModel>();
+            var categoryViewModel = new CategoryViewModel();
+            categoryViewModel.Categories = await _categoryService.GetAll();
+            return View(categoryViewModel);
+        }   
 
-            foreach (var ctg in await _categoryService.GetAll())
-            {
-                CategoryViewModel categoryViewModel = new()
-                {
-                    Id = ctg.Id ?? 0,
-                    CategoryName = ctg.CategoryName,
-                };
-                categories.Add(categoryViewModel);
-            }
-            
-            return View(categories);
-        }
-
-        public async Task<IActionResult> AddCategory(CategoryViewModel categoryViewModel)
+        public async Task<IActionResult> AddCategory(CategoryModel categoryModel)
         {
 
-            CategoryModel categoryModel = new CategoryModel()
+            if (!ModelState.IsValid)
             {
-                Id = categoryViewModel.Id,
-                CategoryName = categoryViewModel.CategoryName,
-            };
+                var categoryViewModel = new CategoryViewModel();
+                categoryViewModel.CategoryName = categoryModel.CategoryName;
+                categoryViewModel.Id = categoryModel.Id;
+                return RedirectToAction(nameof(Category), categoryViewModel);
+            }
+          
             await _categoryService.AddNewCategory(categoryModel);
             return RedirectToAction(nameof(Category));
         }
@@ -61,9 +54,15 @@ namespace ECommerce.Electronic.App.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult AddProduct(AddProductModel addProductModel)
         {
-
             var resultModel =  _productService.AddProduct(addProductModel);
             return View();
+        }
+
+        [HttpGet]
+        public JsonResult GetCatgoryById(int id)
+        {
+            var resultModel = _categoryService.GetById(id);
+            return Json(resultModel);
         }
     }
 }

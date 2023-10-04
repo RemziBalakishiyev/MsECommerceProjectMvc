@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Abstract;
+﻿using AutoMapper;
+using BusinessLogic.Abstract;
 using BusinessLogic.Models;
 using DataAccessLayer.Abstract.Customers;
 using Entity.Concrete.Customer;
@@ -8,23 +9,18 @@ namespace BusinessLogic.Concrete.CustomerServices;
 public class CategoryService : ICategoryService
 {
     private readonly ICategoryRepository _categoryRepository;
-
-    public CategoryService(ICategoryRepository categoryRepository)
+    private readonly IMapper _mapper;
+    public CategoryService(ICategoryRepository categoryRepository, IMapper mapper)
     {
         _categoryRepository = categoryRepository;
+        _mapper = mapper;
     }
 
     public async Task<bool> AddNewCategory(CategoryModel categoryModel)
     {
         if (categoryModel is not null)
         {
-
-            Category category = new()
-            {
-                Id = categoryModel.Id ?? 0,
-                CategoryName = categoryModel.CategoryName
-            };
-            await _categoryRepository.AddAsync(category);
+            await _categoryRepository.AddAsync(_mapper.Map<Category>(categoryModel));
             _categoryRepository.SaveChanges();
             return true;
         }
@@ -33,18 +29,16 @@ public class CategoryService : ICategoryService
 
     public async Task<IEnumerable<CategoryModel>> GetAll()
     {
-        List<CategoryModel> categoryModels = new List<CategoryModel>();
-        foreach (var category in await _categoryRepository.GetAll(true))
-        {
-            CategoryModel categoryModel = new()
-            {
-                Id = category.Id,
-                CategoryName = category.CategoryName,
-
-            };
-            categoryModels.Add(categoryModel);
-        };
+        var categoryModels = _mapper.Map<List<CategoryModel>>(await _categoryRepository.GetAll(true));
 
         return categoryModels;
+    }
+
+    public  CategoryModel GetById(int id)
+    {
+
+        var result = _categoryRepository.GetWhere(x => x.Id == id).FirstOrDefault();
+        var categoryModel = _mapper.Map<CategoryModel>(result);
+        return categoryModel;
     }
 }

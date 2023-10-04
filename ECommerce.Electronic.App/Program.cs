@@ -1,15 +1,23 @@
+using AutoMapper;
 using BusinessLogic.Abstract;
 using BusinessLogic.Concrete.CustomerServices;
+using BusinessLogic.Mapping;
+using BusinessLogic.ValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Abstract.Customers;
 using DataAccessLayer.Concrete.EntityFrameworkCore;
 using DataAccessLayer.Concrete.EntityFrameworkCore.Context;
 using DataAccessLayer.Concrete.EntityFrameworkCore.Repositories.CustomerRepsository;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddControllersWithViews()
+    .AddRazorRuntimeCompilation()
+    .AddFluentValidation(x=>x.RegisterValidatorsFromAssemblyContaining<ICustomValidator>());
+
+builder.Services.AddAutoMapper(typeof(ICustomMapper));
 
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService ,CategoryService>();

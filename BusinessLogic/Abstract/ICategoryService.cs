@@ -6,4 +6,5 @@ public interface ICategoryService
     Task<bool> AddNewCategory(CategoryModel categoryModel);
 
     Task<IEnumerable<CategoryModel>> GetAll();
+    CategoryModel GetById(int id);
 }
