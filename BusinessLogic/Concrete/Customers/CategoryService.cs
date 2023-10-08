@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Abstract;
+﻿using AutoMapper;
+using BusinessLogic.Abstract;
 using BusinessLogic.Models.CategoryModels;
 using DataAccessLayer.Abstract.Customers;
 using DataAccessLayer.Concrete.EntityFrameworkCore.Repositories.CustomerRepsository;
@@ -10,9 +11,11 @@ public class CategoryService : ICategoryService
 {
 
     private readonly ICategoryRepository _categoryRepository;
-    public CategoryService(ICategoryRepository categoryRepository)
+    private readonly IMapper _mapper;
+    public CategoryService(ICategoryRepository categoryRepository, IMapper mapper)
     {
         _categoryRepository = categoryRepository;
+        _mapper = mapper;
     }
 
     public async Task<bool> AddCategory(CategoryModel categoryModel)
@@ -22,12 +25,8 @@ public class CategoryService : ICategoryService
             return false;
         }
 
-        Category category = new()
-        {
-            Id = categoryModel.Id ?? 0,
-            CategoryName = categoryModel.CategoryName
-        };
 
+        var category = _mapper.Map<Category>(categoryModel);
         var addedData = await _categoryRepository.AddAsync(category);
         await _categoryRepository.SaveChanges();
         return true;
@@ -35,18 +34,29 @@ public class CategoryService : ICategoryService
 
     public async Task<IEnumerable<CategoryModel>> GetAll()
     {
-        IList<CategoryModel> categoryModels = new List<CategoryModel>();
-
-        foreach (var category in await _categoryRepository.GetAll())
-        {
-            CategoryModel categoryModel = new()
-            {
-                Id = category.Id,
-                CategoryName = category.CategoryName
-            };
-            categoryModels.Add(categoryModel);
-        };
-
+        var categoryModels = _mapper.Map<IEnumerable<CategoryModel>>(await _categoryRepository.GetAll());
         return categoryModels;
+    }
+
+    public async Task<CategoryModel> GetById(int id)
+    {
+        var categoryModel = _mapper.Map<CategoryModel>(await _categoryRepository.GetById(id));
+        return categoryModel;
+    }
+
+    public async Task<bool> Remove(int id)
+    {
+        var deletedCategory = await _categoryRepository.GetById(id);
+
+        if(deletedCategory is null)
+        {
+            return false;
+        }
+
+        _categoryRepository.Remove(deletedCategory);
+
+        await _categoryRepository.SaveChanges();
+
+        return true;
     }
 }

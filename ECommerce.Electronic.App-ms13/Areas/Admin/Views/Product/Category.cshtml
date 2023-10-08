@@ -1,4 +1,5 @@
-﻿@model IEnumerable<CategoryModel>
+﻿
+@model CategoryViewModel
 @{
     ViewData["Title"] = "Category";
 }
@@ -25,7 +26,8 @@
                               <div class="modal-body">
                                 <div class="mb-3">
                                     <label for="categoryName" class="form-label">Category Name</label>
-                                    <input type="text" class="form-control" id="categoryName" name="CategoryName" placeholder="Tvs, Computers etc. ">
+                                    <input type="text" class="form-control" asp-for="CategoryName"  id="categoryName" name="CategoryName" placeholder="Tvs, Computers etc. ">
+                                    <span asp-validation-for="@Model.CategoryName" class="text-danger"></span>
                                 </div>
                               </div>
                               <div class="modal-footer">
@@ -41,21 +43,24 @@
     <div class=" card-body px-4">
 
         <div class="col-8">
-         <table class="table">
+         <table class="table table-bordered">
           <thead>
             <tr>
               <th scope="col">Id</th>
               <th scope="col">Category Name</th>
+              <th colspan="2" class="text-center">Operation</th>
             
             </tr>
           </thead>
           <tbody>
             
-              @foreach (var category in Model)
+              @foreach (var category in Model.CategoryModels)
               {
                   <tr>
                       <td>@category.Id</td>
                       <td>@category.CategoryName</td>
+                      <td class="text-center"><a class="btn btn-outline-danger" onclick="deleteCategoryById(@category.Id)">Delete</a></td>
+                      <td class="text-center"><a class="btn btn-outline-success">Edit</a></td>
                   </tr>
               }
            
@@ -64,4 +69,30 @@
         </div>
     </div>
 </div>
+
+
+@section scripts{
+    
+    <script>
+            function deleteCategoryById(CategoryId){
+
+                let data = {id:CategoryId}
+                $.ajax({
+                   type:"GET",
+                   url:"/Admin/Product/DeleteCategory",
+                   data:data,
+                   dataType:"json",
+                   contentType:"application/json; charset=utf-8",
+                   success: function(result){
+                       alert(result.message);
+
+                       window.location.reload();
+                   },
+                   error: function(textStatus){
+                       console.error(textStatus)
+                   }
+                })
+            }
+    </script>
+}
 

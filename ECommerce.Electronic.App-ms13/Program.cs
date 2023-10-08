@@ -1,16 +1,26 @@
 using BusinessLogic.Abstract;
 using BusinessLogic.Concrete.Customers;
+using BusinessLogic.Mappings;
+using BusinessLogic.Models.CategoryModels;
+using BusinessLogic.ValidationRules;
 using DataAccessLayer.Abstract.Customers;
 using DataAccessLayer.Concrete.EntityFrameworkCore.Context;
 using DataAccessLayer.Concrete.EntityFrameworkCore.Repositories.CustomerRepsository;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddControllersWithViews()
+    .AddRazorRuntimeCompilation()
+    .AddFluentValidation(x=>x.RegisterValidatorsFromAssemblyContaining<ICustomValidator>());
+
+builder.Services.AddAutoMapper(typeof(ICustomMapper));
 
 builder.Services.AddScoped<ICategoryService,CategoryService>();
 builder.Services.AddScoped<ICategoryRepository,EfCategoryRepository>();
+
 
 builder.Services.AddDbContext<MsECommerceContext>();
 
