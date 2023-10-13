@@ -11,7 +11,7 @@ namespace ECommerce.Electronic.App.Areas.Admin.Controllers
 
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
-
+        
         public ProductController(IProductService productService, ICategoryService categoryService)
         {
             _productService = productService;
@@ -34,28 +34,30 @@ namespace ECommerce.Electronic.App.Areas.Admin.Controllers
             var categoryViewModel = new CategoryViewModel();
             categoryViewModel.Categories = await _categoryService.GetAll();
             return View(categoryViewModel);
-        }   
-
-        public async Task<IActionResult> AddCategory(CategoryModel categoryModel)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                var categoryViewModel = new CategoryViewModel();
-                categoryViewModel.CategoryName = categoryModel.CategoryName;
-                categoryViewModel.Id = categoryModel.Id;
-                return RedirectToAction(nameof(Category), categoryViewModel);
-            }
-          
-            await _categoryService.AddNewCategory(categoryModel);
-            return RedirectToAction(nameof(Category));
         }
 
-        [HttpPost]
-        public IActionResult AddProduct(AddProductModel addProductModel)
+
+        [HttpGet]
+        public async Task<JsonResult> GetCategories()
         {
-            var resultModel =  _productService.AddProduct(addProductModel);
-            return View();
+            var categories = await _categoryService.GetAll();
+            return Json(categories);
+        }
+
+ 
+
+        [HttpPost]
+        public JsonResult AddProduct([FromBody]  AddProductModel addProductModel)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var resultModel = _productService.AddProduct(addProductModel);
+                return Json(new {message="Product added successfully" });
+            }
+            return Json("");
+
+     
         }
 
         [HttpGet]

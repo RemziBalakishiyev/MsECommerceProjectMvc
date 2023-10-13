@@ -3,9 +3,11 @@
    <head>
       <meta name="viewport" content="width=device-width" />
       <title>@ViewBag.Title</title>
-      <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+      @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+      <link href="~/css/flat.min.css" rel="stylesheet">
       <link href="~/lib/font-awasome/css/all.min.css">
       <link href="~/lib/font-awasome/css/fontawesome.min.css">
+
 
    </head>
    <body>
@@ -33,7 +35,7 @@
                         </a>
                         <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                            <li class="w-100">
-                              <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Add Product</span> 1</a>
+                              <a asp-controller="product" asp-action="AddProduct" class="nav-link px-0"> <span class="d-none d-sm-inline">Add Product</span> 1</a>
                            </li>
                            <li>
                               <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">List Product</span> 2</a>
@@ -77,6 +79,6 @@
       <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
       <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
-      @RenderSection("scripts",false);
+      @RenderSection("scripts",false)
    </body>
 </html>

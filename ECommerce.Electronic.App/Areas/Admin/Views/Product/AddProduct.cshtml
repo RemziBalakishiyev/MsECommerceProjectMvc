@@ -1,7 +1,136 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "AddProduct";
 }
 
 
+<div class="card shadow">
+    <div class="card-header text-bg-dark">
+        <h1 class="text-center">
+            Add Product
+        </h1>
+    </div>
+    <div class="card-body">
+        <form class="row">
+            <div class="mb-3 col-4">
+                <label for="productName" class="form-label">Product Name</label>
+                <input type="text" class="form-control" id="productName" placeholder="Iphone 14,Samsung galaxy etc">
+            </div>
 
+            <div class="mb-3 col-4">
+                <label for="unitPrice" class="form-label">Unit Price</label>
+                <input type="number" class="form-control" id="unitPrice" placeholder="0">
+            </div>
+
+            <div class="mb-3 col-4">
+                <label for="size" class="form-label">Size</label>
+                <input type="number" class="form-control" id="size" placeholder="0">
+            </div>
+            <div class="row ">
+                <div class="mb-3 col-3 d-flex flex-row align-items-center gap-4">
+                    <div>
+                        <label for="color" class="form-label">Color</label>
+                        <input type="color" class="form-control" id="color" placeholder="0" style="width:50px">
+                    </div>
+                    <a class="btn btn-info mt-4" onclick="addColorLabel()">Add Color</a>
+                    <div class="color-containers mt-4 gap-3">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label for="size" class="form-label">Category</label>
+                    <select class="form-select" aria-label="Default select example" id="categorySelect">
+                      
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3 col-12">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" rows="3"></textarea>
+            </div>
+
+            <button class="btn btn-primary" onclick="addProduct()" type="button">Add Product</button>
+        </form>
+    </div>
+</div>
+
+
+
+@section scripts{
+<script>
+        function FillSelecctBox(){
+                var selectBox = $('#categorySelect');
+                $.ajax({
+                type: 'GET',
+                url: '/Admin/Product/GetCategories', // Replace 'YourController' with the actual controller name
+                dataType: 'json',
+                success: function (data) {
+                    
+                    $.each(data, function (index, item) {
+                        console.log(item)
+                        selectBox.append($('<option>', {
+                            value: item.Id,
+                            text: item.CategoryName
+                        }));
+                    });
+                 }
+               });
+         }
+
+       
+        const colorLabels = [];
+        const colorContainer = $(".color-containers")
+        let index=0;
+        function addColorLabel(){
+            index++
+            const colorCode= $("#color").val();
+            colorLabels.push(colorCode);
+
+            let htmlForColor = $(".color-containers").html();
+            htmlForColor += `<span class='badge rounded mx-1' style='background-color:${colorCode}'>${index}</span>`
+
+            $(".color-containers").html(htmlForColor);
+        }
+
+
+
+        function addProduct(){
+            const colorModels = []
+           
+            for(let i = 0; i<colorLabels.length;i++){
+                let colorModelObj = {
+                    colorCode:colorLabels[i]
+                }
+                colorModels.push(colorModelObj)
+            }
+            var productData = {
+                ProductName: $("#productName").val(),
+                UnitPrice: parseInt($("#unitPrice").val()),
+                Size: parseInt($("#size").val()),
+                CategoryId: parseInt($("#categorySelect").val()),
+                ProductDescription: $("#description").val(),
+                ColorModels:colorModels
+            };
+
+        
+            console.log(productData)
+            $.ajax({
+                url: '/Admin/Product/AddProduct', // Replace 'YourController' with the actual controller name
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(productData),
+                success: function (response) {
+                    // Handle the response from the server (if needed)
+                    console.log("Product added successfully!");
+                },
+                error: function (error) {
+                    // Handle errors (if any)
+                    console.error("Error adding product:", error);
+                }
+            });
+        }
+
+
+        FillSelecctBox();
+
+
+</script>
+}

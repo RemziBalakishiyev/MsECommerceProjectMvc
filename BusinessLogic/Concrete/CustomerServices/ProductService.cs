@@ -1,4 +1,5 @@
-﻿using BusinessLogic.Abstract;
+﻿using AutoMapper;
+using BusinessLogic.Abstract;
 using BusinessLogic.Models;
 using DataAccessLayer.Abstract.Customers;
 using Entity.Concrete;
@@ -9,27 +10,21 @@ public class ProductService:IProductService
 {
 
     private readonly IProductRepository _productRepository;
-
-    public ProductService(IProductRepository productRepository)
+    private readonly IMapper _mapper;
+    public ProductService(IProductRepository productRepository, IMapper mapper)
     {
         _productRepository = productRepository;
+        _mapper = mapper;
     }
 
     public async Task<bool> AddProduct(AddProductModel productModel)
     {
 
-        Product product = new()
-        {
-            ProductName = productModel.ProductName,
-            Quantity = productModel.Quantity,
-            CategoryId = productModel.CategoryId,
-            InStock = productModel.InStock,
-            ProductDescription = productModel.ProductDescription,
-            Size = productModel.Size,
-            UnitPrice = productModel.UnitPrice,
-        };
+        var product =  _mapper.Map<Product>(productModel);  
+        
         bool result = await _productRepository.AddAsync(product);
 
+        _productRepository.SaveChanges();
         return result;
     }
 }

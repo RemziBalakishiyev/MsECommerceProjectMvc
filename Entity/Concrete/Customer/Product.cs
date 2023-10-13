@@ -7,7 +7,7 @@ public class Product:IBaseTable
 {
     public Product()
     {
-        ProductColors = new HashSet<ProductColor>();
+        Colors = new HashSet<Color>();
     }
     public int Id { get; set; }
     public string ProductName { get; set; } = string.Empty;
@@ -19,6 +19,6 @@ public class Product:IBaseTable
     public int CategoryId { get; set; }
     public Category Category { get; set; }
 
-    public ICollection<ProductColor> ProductColors { get; set; }
+    public ICollection<Color> Colors { get; set; }
 
 }

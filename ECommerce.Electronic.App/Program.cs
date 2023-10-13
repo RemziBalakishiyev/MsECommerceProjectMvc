@@ -15,8 +15,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews()
     .AddRazorRuntimeCompilation()
-    .AddFluentValidation(x=>x.RegisterValidatorsFromAssemblyContaining<ICustomValidator>());
-
+    .AddFluentValidation(x =>
+    {
+        x.RegisterValidatorsFromAssemblyContaining<ICustomValidator>();
+        x.DisableDataAnnotationsValidation = true;
+    })
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = null;
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
 builder.Services.AddAutoMapper(typeof(ICustomMapper));
 
 builder.Services.AddScoped<IProductService, ProductService>();
