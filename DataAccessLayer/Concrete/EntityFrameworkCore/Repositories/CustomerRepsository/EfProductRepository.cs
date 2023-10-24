@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Concrete.EntityFrameworkCore.Repositories.CustomerRepsository;
 
-internal class EfProductRepository : EfGenericRepository<Product>,IProductRepository
+public class EfProductRepository : EfGenericRepository<Product>,IProductRepository
 {
     public EfProductRepository(MsECommerceContext context) : base(context)
     {
@@ -14,5 +14,13 @@ internal class EfProductRepository : EfGenericRepository<Product>,IProductReposi
     public IEnumerable<Product> GetWithCategory()
     {
         return Table.Include(x => x.Category).ToList();
+    }
+
+    public async Task<IEnumerable<Product>> GetAllProducts()
+    {
+        return await Table
+            .Include(x => x.Category)
+            .Include(x => x.Colors)
+            .ToListAsync();
     }
 }

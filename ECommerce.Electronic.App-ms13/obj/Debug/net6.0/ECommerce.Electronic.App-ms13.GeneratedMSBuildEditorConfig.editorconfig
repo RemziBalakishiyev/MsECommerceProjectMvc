@@ -15,12 +15,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\ASUS\Documents\EntityFramework Tutorial\MS-E-Commerce.App\ECommerce.Electronic.App-ms13
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/ASUS/Documents/EntityFramework Tutorial/MS-E-Commerce.App/ECommerce.Electronic.App-ms13/Areas/Admin/Views/Product/AddProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxBZGRQcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ASUS/Documents/EntityFramework Tutorial/MS-E-Commerce.App/ECommerce.Electronic.App-ms13/Areas/Admin/Views/Product/Category.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxDYXRlZ29yeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/Documents/EntityFramework Tutorial/MS-E-Commerce.App/ECommerce.Electronic.App-ms13/Areas/Admin/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ASUS/Documents/EntityFramework Tutorial/MS-E-Commerce.App/ECommerce.Electronic.App-ms13/Areas/Admin/Views/Product/ProductList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdFxQcm9kdWN0TGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ASUS/Documents/EntityFramework Tutorial/MS-E-Commerce.App/ECommerce.Electronic.App-ms13/Areas/Admin/Views/Shared/_AdminLayout.cshtml]

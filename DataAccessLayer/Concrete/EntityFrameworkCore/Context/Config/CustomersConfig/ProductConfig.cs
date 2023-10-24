@@ -17,6 +17,6 @@ public class ProductConfig : IEntityTypeConfiguration<Product>
         builder.Property(x => x.Quantity).HasDefaultValue(0);
         
         builder.HasOne(x => x.Category).WithMany(x => x.Products).HasForeignKey(x => x.CategoryId);
-        builder.HasMany(x => x.ProductColors).WithOne(x => x.Product).HasForeignKey(x => x.ProductId);
+        builder.HasMany(x => x.Colors).WithOne(x => x.Product).HasForeignKey(x => x.ProductId);
     }
 }

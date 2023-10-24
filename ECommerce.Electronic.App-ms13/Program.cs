@@ -14,14 +14,20 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews()
     .AddRazorRuntimeCompilation()
-    .AddFluentValidation(x=>x.RegisterValidatorsFromAssemblyContaining<ICustomValidator>());
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ICustomValidator>())
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = null;
+        options.JsonSerializerOptions.WriteIndented = true;
+    });
 
 builder.Services.AddAutoMapper(typeof(ICustomMapper));
 
 builder.Services.AddScoped<ICategoryService,CategoryService>();
 builder.Services.AddScoped<ICategoryRepository,EfCategoryRepository>();
 
-
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IProductRepository, EfProductRepository>();
 builder.Services.AddDbContext<MsECommerceContext>();
 
 var app = builder.Build();

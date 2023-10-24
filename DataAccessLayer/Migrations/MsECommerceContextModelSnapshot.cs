@@ -51,27 +51,16 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ColorName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("Color");
-                });
-
-            modelBuilder.Entity("Entity.Concrete.Customer.ProductColor", b =>
-                {
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ColorId")
-                        .HasColumnType("int");
+                    b.HasKey("Id");
 
-                    b.HasKey("ProductId", "ColorId");
+                    b.HasIndex("ProductId");
 
-                    b.HasIndex("ColorId");
-
-                    b.ToTable("ProductColor");
+                    b.ToTable("Color");
                 });
 
             modelBuilder.Entity("Entity.Concrete.Product", b =>
@@ -84,6 +73,10 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("InStock")
                         .HasColumnType("bit");
@@ -115,21 +108,13 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("Entity.Concrete.Customer.ProductColor", b =>
+            modelBuilder.Entity("Entity.Concrete.Customer.Color", b =>
                 {
-                    b.HasOne("Entity.Concrete.Customer.Color", "Color")
-                        .WithMany("ProductColors")
-                        .HasForeignKey("ColorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Entity.Concrete.Product", "Product")
-                        .WithMany("ProductColors")
+                        .WithMany("Colors")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Color");
 
                     b.Navigation("Product");
                 });
@@ -150,14 +135,9 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("Entity.Concrete.Customer.Color", b =>
-                {
-                    b.Navigation("ProductColors");
-                });
-
             modelBuilder.Entity("Entity.Concrete.Product", b =>
                 {
-                    b.Navigation("ProductColors");
+                    b.Navigation("Colors");
                 });
 #pragma warning restore 612, 618
         }
