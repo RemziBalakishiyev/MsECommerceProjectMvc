@@ -41,31 +41,27 @@
         </div>
     </div>
     <div class=" card-body px-4">
-
         <div class="col-8">
-         <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Category Name</th>
-              <th colspan="2" class="text-center">Operation</th>
-            
-            </tr>
-          </thead>
-          <tbody>
-            
-              @foreach (var category in Model.CategoryModels)
-              {
-                  <tr>
-                      <td>@category.Id</td>
-                      <td>@category.CategoryName</td>
-                      <td class="text-center"><a class="btn btn-outline-danger" onclick="deleteCategoryById(@category.Id)">Delete</a></td>
-                      <td class="text-center"><a class="btn btn-outline-success">Edit</a></td>
-                  </tr>
-              }
-           
-           </tbody>
-        </table>
+             <table class="table table-bordered" >
+                  <thead>
+                    <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">Category Name</th>
+                      <th colspan="2" class="text-center">Operation</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      @foreach (var category in Model.CategoryModels)
+                      {
+                          <tr>
+                              <td>@category.Id</td>
+                              <td>@category.CategoryName</td>
+                              <td class="text-center"><a class="btn btn-outline-danger" onclick="deleteCategoryById(@category.Id)">Delete</a></td>
+                              <td class="text-center"><a class="btn btn-outline-success">Edit</a></td>
+                          </tr>
+                      }
+                   </tbody>
+            </table>
         </div>
     </div>
 </div>
@@ -74,6 +70,10 @@
 @section scripts{
     
     <script>
+
+          
+
+
             function deleteCategoryById(CategoryId){
 
                 let data = {id:CategoryId}

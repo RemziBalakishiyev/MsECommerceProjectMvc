@@ -73,57 +73,9 @@ namespace ECommerce.Electronic.App_ms13.Areas.Admin.Controllers
             return RedirectToAction(nameof(Category), categoryViewModel);
 
         }
-        [HttpPost]
-        public async Task<JsonResult> UploadImage(IFormFile image)
-        {
-            try
-            {
-             
 
-                if (image != null && image.Length > 0)
-                {
-                    string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
-                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
-                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await image.CopyToAsync(stream);
-                    }
 
-                    // Construct the URL for the uploaded image
-                    string imageUrl = Url.Content(Path.Combine("/uploads", uniqueFileName));
-
-                    // Log the imageUrl for debugging
-                    Console.WriteLine("Image URL: " + imageUrl);
-
-                    // You can save the imageUrl in your database or use it as needed
-
-                    return Json(new { imageUrl });
-                }
-
-                return Json(new { error = "No image provided" });
-            }
-            catch (Exception ex)
-            {
-                // Log the error for debugging
-                Console.WriteLine("Error uploading image: " + ex.Message);
-
-                return Json(new { error = "Error uploading image: " + ex.Message });
-            }
-        }
-
-        [HttpGet]
-        public async Task<JsonResult> GetAllProduct()
-        {
-            var productList = await _productService.GetAllProduct();
-            return Json(productList);
-        }
-
-        public IActionResult ProductList()
-        {
-            return View();
-        }
         [HttpGet]
         public async Task<JsonResult> DeleteCategory(int id)
         {
@@ -135,6 +87,49 @@ namespace ECommerce.Electronic.App_ms13.Areas.Admin.Controllers
             }
 
             return Json(new { message = "Category isnot  Deleted" });
+        }
+
+
+        [HttpPost]
+
+        public async Task<JsonResult> UploadImage(IFormFile image)
+        {
+            try
+            {
+
+                if (image != null && image.Length > 0)
+                {
+                    string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+                    string uniqeFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqeFileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await image.CopyToAsync(stream);
+                    }
+
+                    string imagePath = Path.Combine("/uploads", uniqeFileName);
+                    string imageUrl = Url.Content(imagePath);
+
+
+                    return Json(new { imageUrl });
+                }
+                return Json(new { error = "Image is not upload" });
+
+            }
+            catch (Exception)
+            {
+
+                return Json(new { error = "Error Happend" });
+            }
+
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> GetAllProduct()
+        {
+            var productList = await _productService.GetAll();
+            return Json(productList);
         }
     }
 }

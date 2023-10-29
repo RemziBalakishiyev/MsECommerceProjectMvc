@@ -11,11 +11,6 @@ public class EfProductRepository : EfGenericRepository<Product>,IProductReposito
     {
     }
 
-    public IEnumerable<Product> GetWithCategory()
-    {
-        return Table.Include(x => x.Category).ToList();
-    }
-
     public async Task<IEnumerable<Product>> GetAllProducts()
     {
         return await Table
@@ -23,4 +18,11 @@ public class EfProductRepository : EfGenericRepository<Product>,IProductReposito
             .Include(x => x.Colors)
             .ToListAsync();
     }
+
+    public IEnumerable<Product> GetWithCategory()
+    {
+        return Table.Include(x => x.Category).ToList();
+    }
+
+   
 }

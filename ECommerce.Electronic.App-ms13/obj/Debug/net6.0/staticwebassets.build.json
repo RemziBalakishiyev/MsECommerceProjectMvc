@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ol+Qet8YtVUKuym3k93SXkqKe7RcXAZ3TZWF+10V8dA=",
+  "Hash": "t00K70jxPoQKoUaAm4LjTAHzzZ/STdNIunInMGZLUG0=",
   "Source": "ECommerce.Electronic.App-ms13",
   "BasePath": "_content/ECommerce.Electronic.App-ms13",
   "Mode": "Default",
@@ -3281,12 +3281,12 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\ASUS\\Documents\\EntityFramework Tutorial\\MS-E-Commerce.App\\ECommerce.Electronic.App-ms13\\wwwroot\\uploads\\2b55ef7a-e444-45e4-8c23-55d44f559407_WhatsApp Image 2023-09-25 at 10.55.17.jpeg",
+      "Identity": "C:\\Users\\ASUS\\Documents\\EntityFramework Tutorial\\MS-E-Commerce.App\\ECommerce.Electronic.App-ms13\\wwwroot\\uploads\\7a533061-766d-4fc7-8bcc-5df9b2adb5e9__-_2023-04-18t113637.204.png",
       "SourceId": "ECommerce.Electronic.App-ms13",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\ASUS\\Documents\\EntityFramework Tutorial\\MS-E-Commerce.App\\ECommerce.Electronic.App-ms13\\wwwroot\\",
       "BasePath": "_content/ECommerce.Electronic.App-ms13",
-      "RelativePath": "uploads/2b55ef7a-e444-45e4-8c23-55d44f559407_WhatsApp Image 2023-09-25 at 10.55.17.jpeg",
+      "RelativePath": "uploads/7a533061-766d-4fc7-8bcc-5df9b2adb5e9__-_2023-04-18t113637.204.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3295,15 +3295,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\2b55ef7a-e444-45e4-8c23-55d44f559407_WhatsApp Image 2023-09-25 at 10.55.17.jpeg"
+      "OriginalItemSpec": "wwwroot\\uploads\\7a533061-766d-4fc7-8bcc-5df9b2adb5e9__-_2023-04-18t113637.204.png"
     },
     {
-      "Identity": "C:\\Users\\ASUS\\Documents\\EntityFramework Tutorial\\MS-E-Commerce.App\\ECommerce.Electronic.App-ms13\\wwwroot\\uploads\\3b9bea6e-6826-4278-8cc8-108569b1e2b8_fotis-fotopoulos-6sAl6aQ4OWI-unsplash.jpg",
+      "Identity": "C:\\Users\\ASUS\\Documents\\EntityFramework Tutorial\\MS-E-Commerce.App\\ECommerce.Electronic.App-ms13\\wwwroot\\uploads\\be783a6a-d6f2-408f-a4b3-3d3cf63d54ab_Apple-iPhone-14-iPhone-14-Plus-2up-purple-220907_inline.jpg.large.jpg",
       "SourceId": "ECommerce.Electronic.App-ms13",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\ASUS\\Documents\\EntityFramework Tutorial\\MS-E-Commerce.App\\ECommerce.Electronic.App-ms13\\wwwroot\\",
       "BasePath": "_content/ECommerce.Electronic.App-ms13",
-      "RelativePath": "uploads/3b9bea6e-6826-4278-8cc8-108569b1e2b8_fotis-fotopoulos-6sAl6aQ4OWI-unsplash.jpg",
+      "RelativePath": "uploads/be783a6a-d6f2-408f-a4b3-3d3cf63d54ab_Apple-iPhone-14-iPhone-14-Plus-2up-purple-220907_inline.jpg.large.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3312,15 +3312,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\3b9bea6e-6826-4278-8cc8-108569b1e2b8_fotis-fotopoulos-6sAl6aQ4OWI-unsplash.jpg"
+      "OriginalItemSpec": "wwwroot\\uploads\\be783a6a-d6f2-408f-a4b3-3d3cf63d54ab_Apple-iPhone-14-iPhone-14-Plus-2up-purple-220907_inline.jpg.large.jpg"
     },
     {
-      "Identity": "C:\\Users\\ASUS\\Documents\\EntityFramework Tutorial\\MS-E-Commerce.App\\ECommerce.Electronic.App-ms13\\wwwroot\\uploads\\805dd81d-28cb-489c-af1f-8c9a27d761e6_fotis-fotopoulos-6sAl6aQ4OWI-unsplash.jpg",
+      "Identity": "C:\\Users\\ASUS\\Documents\\EntityFramework Tutorial\\MS-E-Commerce.App\\ECommerce.Electronic.App-ms13\\wwwroot\\uploads\\ede4955e-5057-4f58-b2d8-d1c74d2b9df0_Apple-iPhone-14-iPhone-14-Plus-2up-purple-220907_inline.jpg.large.jpg",
       "SourceId": "ECommerce.Electronic.App-ms13",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\ASUS\\Documents\\EntityFramework Tutorial\\MS-E-Commerce.App\\ECommerce.Electronic.App-ms13\\wwwroot\\",
       "BasePath": "_content/ECommerce.Electronic.App-ms13",
-      "RelativePath": "uploads/805dd81d-28cb-489c-af1f-8c9a27d761e6_fotis-fotopoulos-6sAl6aQ4OWI-unsplash.jpg",
+      "RelativePath": "uploads/ede4955e-5057-4f58-b2d8-d1c74d2b9df0_Apple-iPhone-14-iPhone-14-Plus-2up-purple-220907_inline.jpg.large.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3329,24 +3329,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\805dd81d-28cb-489c-af1f-8c9a27d761e6_fotis-fotopoulos-6sAl6aQ4OWI-unsplash.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\ASUS\\Documents\\EntityFramework Tutorial\\MS-E-Commerce.App\\ECommerce.Electronic.App-ms13\\wwwroot\\uploads\\e7542106-0042-4d3b-a1ca-e3dea224c431_fotis-fotopoulos-6sAl6aQ4OWI-unsplash.jpg",
-      "SourceId": "ECommerce.Electronic.App-ms13",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ASUS\\Documents\\EntityFramework Tutorial\\MS-E-Commerce.App\\ECommerce.Electronic.App-ms13\\wwwroot\\",
-      "BasePath": "_content/ECommerce.Electronic.App-ms13",
-      "RelativePath": "uploads/e7542106-0042-4d3b-a1ca-e3dea224c431_fotis-fotopoulos-6sAl6aQ4OWI-unsplash.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\e7542106-0042-4d3b-a1ca-e3dea224c431_fotis-fotopoulos-6sAl6aQ4OWI-unsplash.jpg"
+      "OriginalItemSpec": "wwwroot\\uploads\\ede4955e-5057-4f58-b2d8-d1c74d2b9df0_Apple-iPhone-14-iPhone-14-Plus-2up-purple-220907_inline.jpg.large.jpg"
     }
   ]
 }

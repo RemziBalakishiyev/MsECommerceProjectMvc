@@ -28,12 +28,9 @@ public class ProductService : IProductService
         return true;
     }
 
-
-    public async Task<IEnumerable<GetAllProduct>> GetAllProduct()
+    public async Task<IEnumerable<GetAllProduct>> GetAll()
     {
-        var productList = await _productRepository.GetAllProducts();
-        var products = _mapper.Map<IEnumerable<GetAllProduct>>(productList);
-        return products;
-
+        var products = await _productRepository.GetAllProducts();
+        return _mapper.Map<IEnumerable<GetAllProduct>>(products);
     }
 }

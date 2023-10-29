@@ -1,98 +1,105 @@
 ﻿@{
     ViewData["Title"] = "AddProduct";
 }
+<div class="accordion accordion-flush  bg-primary shadow" id="accordionFlushExample">
 
-
-<div class="card shadow">
-    <div class="card-header text-bg-dark">
-        <h1 class="text-center">
-            Add Product
-        </h1>
-    </div>
-    <div class="card-body">
-        <form class="row">
-            <div class="mb-3 col-3">
-                <label for="productName" class="form-label">Product Name</label>
-                <input type="text" class="form-control" id="productName" placeholder="Iphone 14,Samsung galaxy etc">
-            </div>
-
-            <div class="mb-3 col-3">
-                <label for="unitPrice" class="form-label">Unit Price</label>
-                <input type="number" class="form-control" id="unitPrice" placeholder="0">
-            </div>
-
-            <div class="mb-3 col-3">
-                <label for="size" class="form-label">Size</label>
-                <input type="number" class="form-control" id="size" placeholder="0">
-            </div>
-            <div class="mb-3 col-3">
-                <label for="quantity" class="form-label">Quantity</label>
-                <input type="number" class="form-control" id="quantity" placeholder="0">
-            </div>
-            <div class="mb-3 col-12">
-                <label for="image" class="form-label">Product Image</label>
-                <input type="file" class="form-control" id="image" accept="image/*">
-            </div>
-            <div class="row ">
-                <div class="mb-3 col-3 d-flex flex-row align-items-center gap-4">
-                    <div>
-                        <label for="color" class="form-label">Color</label>
-                        <input type="color" class="form-control" id="color" placeholder="0" style="width:50px">
-                    </div>
-                    <a class="btn btn-info mt-4" onclick="addColorToContainer()">Add Color</a>
-                    <div class="color-containers mt-4 gap-3">
-                    </div>
+    <div class="accordion-item ">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                Add Product
+            </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse p-2" data-bs-parent="#accordionFlushExample">
+            <div class="card shadow">
+                <div class="card-header text-bg-dark">
+                    <h1 class="text-center">
+                        Add Product
+                    </h1>
                 </div>
-                <div class="col-6">
-                    <label for="size" class="form-label">Category</label>
-                    <select class="form-select" aria-label="Default select example" id="categorySelect">
-                    </select>
+                <div class="card-body">
+                    <form class="row">
+                        <div class="mb-3 col-3">
+                            <label for="productName" class="form-label">Product Name</label>
+                            <input type="text" class="form-control" id="productName" placeholder="Iphone 14,Samsung galaxy etc">
+                        </div>
+
+                        <div class="mb-3 col-3">
+                            <label for="unitPrice" class="form-label">Unit Price</label>
+                            <input type="number" class="form-control" id="unitPrice" placeholder="0">
+                        </div>
+
+                        <div class="mb-3 col-3">
+                            <label for="size" class="form-label">Size</label>
+                            <input type="number" class="form-control" id="size" placeholder="0">
+                        </div>
+                        <div class="mb-3 col-3">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <input type="number" class="form-control" id="quantity" placeholder="0">
+                        </div>
+                        <div class="mb-3 col-12">
+                            <label for="image" class="form-label">Product Image</label>
+                            <input type="file" class="form-control" id="image" accept="image/*">
+                        </div>
+                        <div class="row ">
+                            <div class="mb-3 col-3 d-flex flex-row align-items-center gap-4">
+                                <div>
+                                    <label for="color" class="form-label">Color</label>
+                                    <input type="color" class="form-control" id="color" placeholder="0" style="width:50px">
+                                </div>
+                                <a class="btn btn-info mt-4" onclick="addColorToContainer()">Add Color</a>
+                                <div class="color-containers mt-4 gap-3">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="size" class="form-label">Category</label>
+                                <select class="form-select" aria-label="Default select example" id="categorySelect">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3 col-12">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" rows="3"></textarea>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="addProduct()" type="button">Add Product</button>
+                    </form>
                 </div>
             </div>
-            <div class="mb-3 col-12">
-                <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" rows="3"></textarea>
-            </div>
-
-            <button class="btn btn-primary" onclick="addProduct()" type="button">Add Product</button>
-        </form>
+        </div>
     </div>
-
 
 </div>
-    <div class="container">
 
-      
-
-         <div class="modal-body" id="imageModal">
+<div class="container">
+    <div class="modal-body" id="imageModal">
         <div class="mb-3">
-                    <img id="modalImage" class="modal-content" alt="Product Image">
-            </div>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <img id="modalImage" class="modal-content" width="300" height="300" alt="Product Image">
         </div>
-
-        <h1>Product List</h1>
-        <table id="productTable" class="display" style="width:100%">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Product Name</th>
-                    <th>Product Description</th>
-                    <th>Unit Price</th>
-                    <th>Size</th>
-                    <th>Quantity</th>
-                    <th>In Stock</th>
-                    <th>Category</th>
-                    <th>Image Path</th>
-                    <th>Colors</th>
-                    <!-- Add more table headers as needed -->
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
     </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+
+    <h1>Product List</h1>
+    <table id="productTable" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Product Description</th>
+                <th>Unit Price</th>
+                <th>Size</th>
+                <th>Quantity</th>
+                <th>In Stock</th>
+                <th>Category</th>
+                <th>Image Path</th>
+                <th>Colors</th>
+                <!-- Add more table headers as needed -->
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+</div>
 
 
 @section scripts{
@@ -100,140 +107,137 @@
 
 <script>
 
-           $(document).ready(function () {
-                       $('#imageModal').hide();
-                $('#productTable').DataTable({
-                    ajax: {
-                        url: '/Admin/Product/GetAllProduct',  // Replace with the correct URL
-                        dataSrc: ''
+      $(document).ready(function(){
+             $('#imageModal').hide();
+
+            $("#productTable").dataTable({
+
+                    ajax:{
+                        url:'/Admin/Product/GetAllProduct',
+                        dataSrc:""
                     },
-                    columns: [
-                        { data: 'Id' },
-                        { data: 'ProductName' },
+                    columns:[
+                        { data:"Id"},
+                        { data:"ProductName"},
                         { data: 'ProductDescription' },
                         { data: 'UnitPrice' },
                         { data: 'Size' },
                         { data: 'Quantity' },
                         { data: 'InStock' },
                         {
-                            data: 'category.CategoryName',
-                            render: function (data, type, row) {
-                                return data || 'N/A';
-                            }
+                            data: 'Category.CategoryName'
                         },
-                        { data: 'ImagePath',
-                            render: function (data, type, row) {
-                              
-                            return '<button class="btn btn-primary" data-image-path="' + data + '">View Image</button>';
-                        }},
+                        {  data: 'ImagePath',
+                           render: function(data,type,row){
+                                return '<button id="showImageBtn"  class="btn btn-success" data-image-path="' + data + '">View Image</button>';
+                           }
+                        
+                        },
                         {
                             data: 'Colors',
-                            render: function (data, type, row) {
-                                if (data && data.length > 0) {
-                                    return data.map(function (color) {
-                                        return color.colorCode;
-                                    }).join(', ');
+                            render: function(data,type,row){
+
+                                if( data.length > 0){
+                                    let newColors = "";
+                                    for (let i = 0; i < data.length; i++) { 
+                                        newColors +=  `<span class="badge rounded mx-1" style="background-color:${data[i].ColorCode}">${data[i].ColorCode}</span>`;
+                                    }
+                                    return newColors;
                                 }
-                                return 'N/A';
-                            }
+                                return "Reng Yoxdur"
+                             }
                         }
-                        // Add more columns as needed
                     ]
                 });
 
-                $('#productTable tbody').on('click', 'button.btn-primary', function () {
+
+                $("#tableBody").on("click","button.btn-success",function(){
+                    let imagePath = $(this).data("image-path");
                     console.log(imagePath)
-                    var imagePath = $(this).data('image-path');
-                    $('#modalImage').attr('src', imagePath);
+                    $("#modalImage").attr("src",imagePath)
                     $('#imageModal').show();
-                });
-
-
-                $('.close').on('click', function () {
-                    $('#imageModal').hide();
-                });
-            });
-           function fillSelectBoxOptions(){
-               let selectBox = $("#categorySelect");
-               $.ajax({
-                   type:"GET",
-                   url:"/Admin/Product/GetCategoryList",
-                   dataType:"json",
-                   success: function(data){
-                       for(let i = 0; i<data.length; i++){
-                           selectBox.append($('<option>',
-                               {
-                                   value: data[i].Id,
-                                   text: data[i].CategoryName
-                               }
-                         ));
-                      }
-                   }
-
-               })
+                })
+              
+      });
+    function fillSelectBoxOptions(){
+        let selectBox = $("#categorySelect");
+        $.ajax({
+            type:"GET",
+            url:"/Admin/Product/GetCategoryList",
+            dataType:"json",
+            success: function(data){
+                for(let i = 0; i<data.length; i++){
+                    selectBox.append($('<option>',
+                        {
+                            value: data[i].Id,
+                            text: data[i].CategoryName
+                        }
+                    ));
+                }
             }
 
-            const colors = [];// ["#fff","#er34e4","#000" ]
-            const colorContainer = $(".color-containers");
-            let index=0;
+        })
+    }
 
-            function addColorToContainer(){
-                index++;
-                const colorCode = $("#color").val();
+    const colors = [];// ["#fff","#er34e4","#000" ]
+    const colorContainer = $(".color-containers");
+    let index=0;
 
-                colors.push(colorCode);
+    function addColorToContainer(){
+        index++;
+        const colorCode = $("#color").val();
 
-                let htmlForColor = colorContainer.html();
+        colors.push(colorCode);
 
-                htmlForColor += `<span class="badge rounded mx-1" style="background-color:${colorCode}">${index}</span>`
-                colorContainer.html(htmlForColor)
-            }
+        let htmlForColor = colorContainer.html();
 
-        function addProduct() {
-            const colorModels = [];
-            for (let i = 0; i < colors.length; i++) {
-                let colorModelObj = {
-                    Id: 0,
-                    ColorCode: colors[i]
-                };
-                colorModels.push(colorModelObj);
-            }
+        htmlForColor += `<span class="badge rounded mx-1" style="background-color:${colorCode}">${index}</span>`
+        colorContainer.html(htmlForColor)
+    }
 
-            let productModel = {
-                ProductName: $("#productName").val(),
-                UnitPrice: parseInt($("#unitPrice").val()),
-                Size: parseInt($("#size").val()),
-                CategoryId: parseInt($("#categorySelect").val()),
-                ProductDescription: $("#description").val(),
-                Quantity: parseInt($("#quantity").val()),
-                Colors: colorModels
+    function addProduct() {
+        const colorModels = [];
+        for (let i = 0; i < colors.length; i++) {
+            let colorModelObj = {
+                Id: 0,
+                ColorCode: colors[i]
             };
+            colorModels.push(colorModelObj);
+        }
 
-            console.log(productModel);
-            console.log(JSON.stringify(productModel), "Json");
-            debugger;
 
-            let imageInput = $("#image").get(0).files;
-            let formData = new FormData();
+        let files = $("#image").get(0).files;
 
-            for (let i = 0; i < imageInput.length; i++) {
-                formData.append("image", imageInput[i]);
-            }
-            console.log(imageInput);
+        let formData =  new FormData();
 
-            // First, upload the image
-            $.ajax({
-                async: true,
+        for(i = 0 ; i<files.length; i++){
+            formData.append("image",files[i])
+        }
+
+        let productModel = {
+            ProductName: $("#productName").val(),
+            UnitPrice: parseInt($("#unitPrice").val()),
+            Size: parseInt($("#size").val()),
+            CategoryId: parseInt($("#categorySelect").val()),
+            ProductDescription: $("#description").val(),
+            Quantity: parseInt($("#quantity").val()),
+            Colors: colorModels,
+            ImagePath:""
+
+        };
+
+         $.ajax({
+                async:true,
                 type: "POST",
                 url: "/Admin/Product/UploadImage",
                 data: formData,
-                dataType: "JSON",
-                processData: false,
-                contentType: false,
+                dataType:"JSON",
+                processData:false,
+                contentType:false,
                 success: function (imageResponse) {
-                    console.log("Image uploaded:", imageResponse);
+                    console.log(imageResponse);
+
                     productModel.ImagePath = imageResponse.imageUrl
-                    // After successful image upload, add the product
                     $.ajax({
                         type: "POST",
                         url: "/Admin/Product/AddProduct",
@@ -244,9 +248,12 @@
                         }
                     });
                 }
-            });
-        }
+        });
 
-           fillSelectBoxOptions();
+
+
+    }
+
+       fillSelectBoxOptions();
 </script>
 }

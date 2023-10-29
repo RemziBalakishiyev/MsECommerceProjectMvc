@@ -15,9 +15,10 @@ public class MapProfile:Profile
         CreateMap<Color, ColorModel>().ReverseMap();
 
         CreateMap<ProductModel, Product>().ReverseMap();
-        CreateMap< Product,GetAllProduct > ()
-            .ForMember(x=>x.InStock,opt=>opt.MapFrom(s=>s.InStock ? "Stokda var":"Stokda yoxdur"))
+        CreateMap<Product, GetAllProduct>()
+            .ForMember(x => x.InStock, opt => opt.MapFrom(s => s.InStock ? "Stokda var" : "Stokda yoxdur"))
             .ReverseMap();
+            
 
     }
 }
